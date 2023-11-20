@@ -1,15 +1,9 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    
-
-    <script src="index.js" defer></script>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User Registration Form</title>
-    <style>
-        body {
+    <style>/* styles.css */
+body {
   font-family: Arial, sans-serif;
   background-color: #f5f5f5;
   color: #333;
@@ -75,7 +69,8 @@ label {
   border-collapse: collapse;
 }
 
-.user-table th, .user-table td {
+.user-table th,
+.user-table td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
@@ -85,14 +80,18 @@ label {
   background-color: #4caf50;
   color: #fff;
 }
-
-    </style>
+</style>
+    <script src="index.js" defer></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Registration Form</title>
   </head>
   <body>
     <div class="container">
       <h1 class="heading">User Registration Form</h1>
       <hr />
-      <form action="" id="userForm" onsubmit="submitForm(event)">
+      <form action="#" id="userForm" onsubmit="submitForm(event)">
         <label for="fullName">Full Name:</label>
         <input
           class="input-field"
@@ -141,11 +140,11 @@ label {
       <table class="user-table" id="userTable">
         <thead>
           <tr>
-            <th>Full Name</th>
-            <th>Email Address</th>
+            <th>Name</th>
+            <th>Email</th>
             <th>Password</th>
-            <th>Date of Birth</th>
-            <th>Accept Terms</th>
+            <th>Dob</th>
+            <th>Accepted terms?</th>
           </tr>
         </thead>
         <tbody id="tableBody"></tbody>
