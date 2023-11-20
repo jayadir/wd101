@@ -78,12 +78,22 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function loadUserEntries() {
-        const userEntries = JSON.parse(localStorage.getItem("userEntries")) || [];
-        userEntries.forEach(({ name, email, pwd, dob, terms }) => {
-            const newRow = userTableBody.insertRow();
-            newRow.innerHTML = `<td>${name}</td><td>${email}</td><td>${pwd}</td><td>${dob}</td><td>${terms}</td>`;
-        });
+    const userEntries = JSON.parse(localStorage.getItem("userEntries")) || [];
+    clearTable(); // Clear existing entries
+
+    userEntries.forEach(({ name, email, pwd, dob, terms }) => {
+        const newRow = userTableBody.insertRow();
+        newRow.innerHTML = `<td>${name}</td><td>${email}</td><td>${pwd}</td><td>${dob}</td><td>${terms}</td>`;
+    });
+}
+
+function clearTable() {
+    const userTableBody = document.getElementById("userTableBody");
+    while (userTableBody.firstChild) {
+        userTableBody.removeChild(userTableBody.firstChild);
     }
+}
+
 
     function saveUserEntry(name, email, pwd, dob, terms) {
         const userEntries = JSON.parse(localStorage.getItem("userEntries")) || [];
