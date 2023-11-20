@@ -33,6 +33,9 @@ function submitForm(event) {
 
   const userData = getUserData();
   localStorage.setItem("userData", JSON.stringify(userData));
+
+  // Clear the form after submission
+  document.getElementById("userForm").reset();
 }
 
 function getUserData() {
