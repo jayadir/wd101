@@ -1,9 +1,15 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <style>/* styles.css */
-body {
+    
+
+    <script src="index.js" defer></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Registration Form</title>
+    <style>
+        body {
   font-family: Arial, sans-serif;
   background-color: #f5f5f5;
   color: #333;
@@ -69,8 +75,7 @@ label {
   border-collapse: collapse;
 }
 
-.user-table th,
-.user-table td {
+.user-table th, .user-table td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
@@ -80,32 +85,28 @@ label {
   background-color: #4caf50;
   color: #fff;
 }
-</style>
-    <script src="index.js" defer></script>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User Registration Form</title>
+
+    </style>
   </head>
   <body>
     <div class="container">
       <h1 class="heading">User Registration Form</h1>
       <hr />
-      <form action="#" id="userForm" onsubmit="submitForm(event)">
-        <label for="fullName">Full Name:</label>
+      <form action="" id="userForm" onsubmit="submitForm(event)">
+        <label for="name">Full Name:</label>
         <input
           class="input-field"
           type="text"
           name="FullName"
-          id="fullName"
+          id="name"
           required
         />
-        <label for="emailAddress">Email Address:</label>
+        <label for="email">Email Address:</label>
         <input
           class="input-field"
           type="email"
           name="EmailAddress"
-          id="emailAddress"
+          id="email"
           required
         />
         <label for="password">Create Password:</label>
@@ -116,12 +117,12 @@ label {
           id="password"
           required
         />
-        <label for="dateOfBirth">Date of Birth:</label>
+        <label for="dob">Date of Birth:</label>
         <input
           class="input-field"
           type="date"
           name="DateOfBirth"
-          id="dateOfBirth"
+          id="dob"
           required
         />
         <div class="checkbox-container">
