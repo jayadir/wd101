@@ -1,10 +1,10 @@
 // index.js
 function submitForm(event) {
   event.preventDefault();
-  const fullNameInput = document.getElementById("fullName");
-  const emailAddressInput = document.getElementById("emailAddress");
+  const fullNameInput = document.getElementById("name");
+  const emailAddressInput = document.getElementById("email");
   const passwordInput = document.getElementById("password");
-  const dateOfBirthInput = document.getElementById("dateOfBirth");
+  const dateOfBirthInput = document.getElementById("dob");
   const acceptTermsInput = document.getElementById("acceptTerms");
 
   if (!validateEmail(emailAddressInput.value)) {
