@@ -4,8 +4,11 @@ function formatUserDate(inputDate) {
         return 'Invalid date format';
     }
 
-    const [month, day, year] = parts.map(part => parseInt(part, 10));
-    const date = new Date(year, month - 1, day);
+    const day = parseInt(parts[1], 10);
+    const month = parseInt(parts[0], 10) - 1; // Months in JavaScript are 0-indexed
+    const year = parseInt(parts[2], 10);
+
+    const date = new Date(year, month, day);
     const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
     return formattedDate;
 }
@@ -16,10 +19,10 @@ function validateDate() {
     const maxDate = new Date(dateInput.max);
     const minDate = new Date(dateInput.min);
 
-    const isInvalid = selectedDate < minDate || selectedDate > maxDate;
-
-    if (isInvalid) {
-        alert("Age should be between " + formatUserDate(dateInput.min) + " and " + formatUserDate(dateInput.max));
+    if (selectedDate < minDate) {
+        alert("Age should be less than " + formatUserDate(dateInput.max));
+    } else if (selectedDate > maxDate) {
+        alert("Age should be less than " + formatUserDate(dateInput.min));
     }
 }
 
@@ -44,11 +47,11 @@ document.addEventListener("DOMContentLoaded", function () {
     registrationForm.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        const name = getValue("name");
-        const email = getValue("email");
-        const password = getValue("password");
-        const terms = getCheckedValue("terms");
-        const dob = getValue("dob");
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const terms = document.getElementById("terms").checked;
+        const dob = document.getElementById("dob").value;
 
         const newRow = userTableBody.insertRow();
         newRow.innerHTML = `<td>${name}</td><td>${email}</td><td>${password}</td><td>${dob}</td><td>${terms}</td>`;
@@ -56,14 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         saveUserEntry(name, email, password, dob, terms);
     });
-
-    function getValue(id) {
-        return document.getElementById(id).value;
-    }
-
-    function getCheckedValue(id) {
-        return document.getElementById(id).checked;
-    }
 
     function clearFormFields() {
         registrationForm.reset();
