@@ -1,4 +1,4 @@
-// index.js
+
 function submitForm(event) {
   event.preventDefault();
   const fullNameInput = document.getElementById("name");
@@ -97,6 +97,3 @@ function renderTable() {
       })
       .join("");
 
-    tableBody.innerHTML = rows;
-  }
-}
