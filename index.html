@@ -1,152 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <script src="index.js" defer></script>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User Registration Form</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
     <style>
         body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
-}
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
 
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+        .container {
+            width: 50%;
+            margin: auto;
+        }
 
-.heading {
-  font-size: 24px;
-  text-align: center;
-  margin-top: 0;
-}
+        .form-container,
+        .table-container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
 
-hr {
-  border: 1px solid #ddd;
-}
+        h2 {
+            text-align: center;
+            color: #008000;
+        }
 
-form {
-  margin-top: 20px;
-}
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-}
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"],
+        input[type="checkbox"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
 
-.input-field {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  box-sizing: border-box;
-}
+        button {
+            padding: 10px 15px;
+            background-color: #008000;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
 
-.checkbox-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
 
-.checkbox-container input {
-  margin-right: 8px;
-}
+        th, td {
+            padding: 12px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
 
-.submit-button {
-  background-color: #4caf50;
-  color: #fff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
+        th {
+            background-color: #008000;
+            color: #fff;
+        }
 
-.user-table {
-  width: 100%;
-  margin-top: 20px;
-  border-collapse: collapse;
-}
-
-.user-table th, .user-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
-
-.user-table th {
-  background-color: #4caf50;
-  color: #fff;
-}
+        tbody tr:hover {
+            background-color: #f5f5f5;
+        }
     </style>
-  </head>
-  <body>
+    <script src="index.js"></script>
+</head>
+<body>
     <div class="container">
-      <h1 class="heading">User Registration Form</h1>
-      <hr />
-      <form action="#" id="userForm" onsubmit="submitForm(event)">
-        <label for="name">Full Name:</label>
-        <input
-          class="input-field"
-          type="text"
-          name="FullName"
-          id="name"
-          required
-        />
-        <label for="email">Email Address:</label>
-        <input
-          class="input-field"
-          type="email"
-          name="EmailAddress"
-          id="email"
-          required
-        />
-        <label for="password">Create Password:</label>
-        <input
-          class="input-field"
-          type="password"
-          name="Password"
-          id="password"
-          required
-        />
-        <label for="dob">Date of Birth:</label>
-        <input
-          class="input-field"
-          type="date"
-          name="DateOfBirth"
-          id="dob"
-          required
-        />
-        <div class="checkbox-container">
-          <input
-            type="checkbox"
-            name="AcceptTerms"
-            id="acceptTerms"
-            required
-          />
-          <label for="acceptTerms">I accept the terms and conditions</label>
+        <div class="form-container">
+            <h2>Registration Form</h2>
+            <form id="registrationForm">
+                <label for="name">Name<font color="red">*</font></label>
+                <input type="text" id="name" name="name" placeholder="Enter full name" required>
+
+                <label for="email">Email<font color="red">*</font></label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+
+                <label for="password">Password<font color="red">*</font></label>
+                <input type="password" id="password" name="password" placeholder="Enter Password" required>
+
+                <label for="dob">Date of Birth<font color="red">*</font></label>
+                <input type="date" id="dob" name="dob" placeholder="dd/mm/yyyy" onchange="restrict()" required class="form-control date-input">
+
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I accept the terms and conditions.</label>
+
+                <button type="submit">Submit</button>
+            </form>
         </div>
-        <button class="submit-button" type="submit">
-          Register
-        </button>
-      </form>
-      <table class="user-table" id="userTable">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Password</th>
-            <th>Dob</th>
-            <th>Accepted terms?</th>
-          </tr>
-        </thead>
-        <tbody id="tableBody"></tbody>
-      </table>
+
+        <div class="table-container" id="output">
+            <h2>Entries</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Dob</th>
+                        <th>Accepted terms?</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody"></tbody>
+            </table>
+        </div>
     </div>
-  </body>
+</body>
 </html>
